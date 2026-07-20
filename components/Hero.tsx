@@ -213,27 +213,27 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#06050a]">
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-[#06050a] pt-24">
       {/* Background decorations */}
       <BackgroundDecorations />
 
       {/* Content */}
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 flex flex-col lg:flex-row items-center gap-12">
+      <div className="relative z-10 flex min-h-[calc(100vh-80px)] w-full max-w-7xl mx-auto items-center px-4 sm:px-6 lg:px-8 lg:flex-row flex-col gap-12">
         {/* Left Side */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-1 space-y-6"
+          className="flex-1 space-y-6 -mt-1"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-sm font-medium text-purple-300">
+          <div className="inline-flex -mt-4 items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-sm font-medium text-purple-300">
             <Gamepad2 className="w-4 h-4" />
             Welcome to PLAYVERSE
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-tight tracking-tight">
             <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]">
               PLAY.
             </span>
