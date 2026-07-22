@@ -26,9 +26,9 @@ export default function MobileControls({ onDirection }: Props) {
   const btn =
     "w-14 h-14 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white active:scale-95 transition";
 
-  return (
-    <div className="block md:hidden mt-6 select-none">
-      <div className="flex flex-col items-center gap-2">
+ return (
+  <div className="block md:hidden mt-6">
+    <div className="flex flex-col items-center gap-2">
         <button type="button" className={btn} onClick={() => changeDirection("up")}>
           <ArrowUp />
         </button>
