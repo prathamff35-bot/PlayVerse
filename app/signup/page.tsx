@@ -9,17 +9,30 @@ export default function SignupPage() {
 const [password, setPassword] = useState("");
 
 const handleSignUp = async () => {
-  const result = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
   });
 
-  console.log(result);
+  if (error) {
+    alert(error.message);
+    return;
+  }
 
-  if (result.error) {
-    alert(result.error.message);
-  } else {
-    alert("Account created! Check your email to verify your account.");
+  if (data.user) {
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .insert({
+        id: data.user.id,
+        email: data.user.email,
+      });
+
+    if (profileError) {
+      alert(profileError.message);
+      return;
+    }
+
+    alert("Account created successfully!");
   }
 };
   return (

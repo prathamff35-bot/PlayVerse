@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import PrimaryButton from "@/components/PrimaryButton";
+import AuthInput from "@/components/AuthInput";
 
 export default function LoginPage() {
 
@@ -30,20 +31,18 @@ const handleLogin = async () => {
           Login
         </h1>
 
-        <input
+       <AuthInput
   type="email"
   placeholder="Email"
   value={email}
   onChange={(e) => setEmail(e.target.value)}
-  className="mb-4 w-full rounded-lg border border-gray-700 bg-gray-800 p-3 text-white outline-none"
 />
 
-<input
+<AuthInput
   type="password"
   placeholder="Password"
   value={password}
   onChange={(e) => setPassword(e.target.value)}
-  className="mb-6 w-full rounded-lg border border-gray-700 bg-gray-800 p-3 text-white outline-none"
 />
 
       <PrimaryButton onClick={handleLogin}>
