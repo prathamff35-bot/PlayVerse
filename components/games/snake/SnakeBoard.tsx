@@ -1,4 +1,5 @@
 // File: components/games/snake/SnakeBoard.tsx
+"use client";
 
 import useSnakeGame from "./hooks/useSnakeGame";
 import { BOARD_SIZE } from "./constants";
