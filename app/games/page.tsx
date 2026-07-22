@@ -8,15 +8,15 @@ import GameCard from "@/components/games/GameCard";
 import type { Game } from "@/types/game";
 import { Gamepad2, Star, Clock } from "lucide-react";
 
+
 export default function GamesPage() {
   const router = useRouter();
   
   const totalGames = games.length;
   const featuredGames = games.filter((game) => game.featured).length;
   const comingSoonGames = games.filter(
-    (game) => game.status === "coming-soon"
-  ).length;
-
+  (game: Game) => game.status === "coming-soon"
+).length;
   const handlePlay = (game: Game) => {
     if (game.slug === "snake") {
       router.push("/games/snake");

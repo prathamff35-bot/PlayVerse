@@ -20,6 +20,11 @@ export type Category =
   | "Adventure";
 
 /**
+ * Represents the current availability status of a game.
+ */
+export type GameStatus = "available" | "coming-soon" | "maintenance";
+
+/**
  * Core Game interface used throughout the application.
  * Designed to be database-agnostic and scalable.
  */
@@ -53,11 +58,15 @@ export interface Game {
 
   /** Whether the game supports multiplayer */
   multiplayer: boolean;
-  maxPlayers: number;
 
-  /** Indicates the game is not yet released */
-  comingSoon: boolean;
+  /** Current availability status */
+  status: GameStatus;
+
+  /** Maximum number of players supported (optional) */
+  maxPlayers?: number;
 
   /** Whether the game is featured on the homepage */
   featured: boolean;
+
+
 }
