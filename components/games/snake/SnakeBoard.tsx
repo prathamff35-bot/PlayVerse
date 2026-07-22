@@ -5,18 +5,26 @@ import useSnakeGame from "./hooks/useSnakeGame";
 import { BOARD_SIZE } from "./constants";
 import BoardCell from "./BoardCell";
 import GameOverOverlay from "./GameOverOverlay";
+import MobileControls from "./MobileControls";
 
 export default function SnakeBoard() {
-  const { snake, isGameOver, food, restartGame } = useSnakeGame();
-
+  const {
+  snake,
+  isGameOver,
+  food,
+  restartGame,
+  setDirection,
+} = useSnakeGame();
   const head = snake[0]; // first segment is the head
 
-  const gridCells = [];
-  for (let y = 0; y < BOARD_SIZE; y++) {
-    for (let x = 0; x < BOARD_SIZE; x++) {
-     const snakeSet = new Set(
+  const snakeSet = new Set(
   snake.map(({ x, y }) => `${x},${y}`)
 );
+
+const gridCells = [];
+
+for (let y = 0; y < BOARD_SIZE; y++) {
+  for (let x = 0; x < BOARD_SIZE; x++) {
       const isFood = food.x === x && food.y === y;
       const isHead = head.x === x && head.y === y;
 
@@ -33,6 +41,7 @@ export default function SnakeBoard() {
   }
 
   return (
+  <>
     <div className="relative w-full max-w-[600px] aspect-square rounded-3xl border border-white/10 backdrop-blur-xl bg-black/40 shadow-2xl shadow-purple-900/20 overflow-hidden p-4">
       {/* Subtle radial gradient overlay */}
       <div
@@ -54,11 +63,14 @@ export default function SnakeBoard() {
 
       {/* Game Over Overlay */}
       <GameOverOverlay
-        isOpen={isGameOver}
-        title="Game Over"
-        message="You hit the wall!"
-        onRestart={restartGame}
-      />
-    </div>
-  );
+  isOpen={isGameOver}
+  title="Game Over"
+  message="You hit the wall!"
+  onRestart={restartGame}
+/>
+</div>
+
+<MobileControls onDirection={setDirection} />
+</>
+);
 }
