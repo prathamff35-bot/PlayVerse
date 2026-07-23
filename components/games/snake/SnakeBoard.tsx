@@ -41,7 +41,7 @@ for (let y = 0; y < BOARD_SIZE; y++) {
   }
 
   return (
-  <>
+  <div className="flex flex-col items-center w-full">
     <div className="relative w-full max-w-[600px] aspect-square rounded-3xl border border-white/10 backdrop-blur-xl bg-black/40 shadow-2xl shadow-purple-900/20 overflow-hidden p-4">
       {/* Subtle radial gradient overlay */}
       <div
@@ -51,6 +51,7 @@ for (let y = 0; y < BOARD_SIZE; y++) {
             "radial-gradient(circle at 50% 0%, rgba(168,85,247,0.12), transparent 70%)",
         }}
       />
+
       <div
         className="grid h-full w-full rounded-2xl overflow-hidden"
         style={{
@@ -61,16 +62,15 @@ for (let y = 0; y < BOARD_SIZE; y++) {
         {gridCells}
       </div>
 
-      {/* Game Over Overlay */}
       <GameOverOverlay
-  isOpen={isGameOver}
-  title="Game Over"
-  message="You hit the wall!"
-  onRestart={restartGame}
-/>
-</div>
+        isOpen={isGameOver}
+        title="Game Over"
+        message="You hit the wall!"
+        onRestart={restartGame}
+      />
+    </div>
 
-<MobileControls onDirection={setDirection} />
-</>
+    <MobileControls onDirection={setDirection} />
+  </div>
 );
 }
